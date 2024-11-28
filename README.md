@@ -99,6 +99,58 @@ sudo dpkg -i dist/installers/chatgpt-app_1.0.0_amd64.deb
 
 ---
 
+## Criando Atalhos de Teclado no Ubuntu
+
+Para criar atalhos de teclado no Ubuntu, você pode usar o script Bash abaixo. Ele permite configurar um atalho para abrir o terminal utilizando a combinação "Alt + Espaço".
+
+### 1. Criar Script de Atalho
+
+Crie um arquivo chamado `criar_atalho.sh` com o seguinte conteúdo:
+
+```bash
+#!/bin/bash
+
+# Script para criar atalhos de teclado no Ubuntu
+
+# Nome do atalho e comando a ser executado
+KEYBIND_NAME="Abrir Terminal"
+KEYBIND_COMMAND="gnome-terminal"
+KEYBIND_SHORTCUT="<Alt>space"
+
+# Caminho para as configurações do dconf
+DCONF_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/"
+KEYBIND_PATH="custom0/"
+
+# Cria a configuração do atalho
+FULL_PATH="$DCONF_PATH$KEYBIND_PATH"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['$FULL_PATH']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$FULL_PATH name "$KEYBIND_NAME"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$FULL_PATH command "$KEYBIND_COMMAND"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$FULL_PATH binding "$KEYBIND_SHORTCUT"
+
+echo "Atalho criado com sucesso: $KEYBIND_NAME ($KEYBIND_SHORTCUT)"
+```
+
+### 2. Tornar o Script Executável
+
+Certifique-se de que o script está com permissão de execução:
+
+```bash
+chmod +x criar_atalho.sh
+```
+
+### 3. Executar o Script
+
+Execute o script para criar o atalho:
+
+```bash
+./criar_atalho.sh
+```
+
+---
+
+
 ## Contribuindo
 
 Contribuições são bem-vindas! Para contribuir:
