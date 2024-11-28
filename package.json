@@ -1,0 +1,32 @@
+{
+  "name": "chatgpt-app",
+  "version": "1.0.0",
+  "main": "main.js",
+  "homepage": "https://github.com/rafaelduarteamaral/chat-gpt-linux",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.seuapp.chatgpt",
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": "assets/chatgpt.png",
+      "maintainer": "Seu Nome rafaelduarteamaral@gmail.com",
+      "category": "Utility",
+      "description": "Uma aplicação para acessar o ChatGPT de forma rápida."
+    }
+  },
+  "keywords": [],
+  "author": {
+    "name": "Rafael Duarte Amaral",
+    "email": "rafaelduarteamaral@gmail.com"
+  },  
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8"
+  }
+}
